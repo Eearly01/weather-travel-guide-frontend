@@ -12,5 +12,5 @@ const TravelCard = (props) => {
         </Card.Body>
     </Col>);
 }
- 
+
 export default TravelCard;
