@@ -23,10 +23,12 @@ function App() {
   }
 
   const getWeather = (lat, lon) => {
-    axios.get(`https://api.weather.gov/points/${lat},${lon}`).then((res) => { axios.get(res.data.properties.forecast).then((weatherRes) => {
-      const weatherData = weatherRes.data.properties.periods;
-      setWeatherDays(weatherData);
-    })})
+    axios.get(`https://api.weather.gov/points/32.778,-96.7962`).then((res) => {
+			axios.get(res.data.properties.forecast).then((weatherRes) => {
+				const weatherData = weatherRes.data.properties.periods;
+				setWeatherDays(weatherData);
+			});
+		});
   }
 
   const formSubmit = (e) => {
@@ -54,7 +56,7 @@ function App() {
   // }
 
   useEffect(() => {
-    //getWeather();
+    getWeather();
     
   }, []);
 
