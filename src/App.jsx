@@ -34,9 +34,10 @@ function App() {
 		<Container>
 			<h1>Weather Travel Guide</h1>
 			<p>{weatherDays ? weatherDays.map((days) => {
-        return (
-          days.name
-        )
+        return <div>
+          {days.name}
+          {days.temperature}
+          </div>;
       }) : ' '}</p>
 			<Row>
 				<WeatherCard />
