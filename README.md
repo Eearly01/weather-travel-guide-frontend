@@ -1,71 +1,38 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 # weather-travel-guide-frontend
+
+
+### node list
+
+- axios
+
+- react-bootstrap
+
+- Install project with
+    ```bash
+        npm i
+    ```
+### instruction for running
+
+1. For this you will need two terminals open. in one terminal cd into the weather-travel-guide-Backend and in the other cd into weather-travel-guide-fronten
+
+2. In the weather-travel-guide-Backend terminal after you have run npm i to install all the things you will need for the computer to run this run nodemon. you will need to do this in the weather-travel-guide-Backend first as the back end will need to be running on localhost:3000. if on deployment your backend crashes make sure you're running the latest version of node and run nodemon again. When your terminal is connected to mongoDB you are connected and ready to continue.
+
+3. In the weather-travel-guide-front after you have run npm i to install all the things you will need for the computer to run this rum npm start. After running npm start it will ask you if it can run on localhost:3001 pres y for yes and react will open the new page for you. When the console for the front end reads connected, you are ready to explore the app.
+
+### Team colaborators 
+
+- Elijah Early
+
+- Larry Yang
+
+- Bailey Rechkemmer
+
+### live link
+
+- 
+
+### wireframes
+
+![Wire Framework](img\project3_wireframe3.png)
+![Wire Framework](img\project3_wireframe2.png)
+![Wire Framework](img\project3_wireframe1.png)
