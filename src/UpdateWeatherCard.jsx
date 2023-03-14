@@ -26,30 +26,18 @@ const UpdateWeatherCardFrom = (props) => {
 
     return (
         <Col sm={12} md={{ span: 4, offset: 4 }}>
-            <h2>Add New Card</h2>
+            <h2>Edit City</h2>
             <form onSubmit={handleSubmit}>
             <div className="mb-3">
-                <label className="form-label" htmlFor="latitude">
-                Latitude
+                <label className="form-label" htmlFor="city">
+                City
                 </label>
                 <input
                     onChange={handleChange}
                     className="form-control"
-                    type="number"
-                    name="latitude"
-                    placeholder={props.weatherData.latitude}              
-                />
-            </div>
-            <div className="mb-3">
-                <label className="form-label" htmlFor="longitude">
-                    Longitude
-                </label>
-                <input
-                    onChange={handleChange}
-                    className="form-control"
-                    type="number"
-                    name="longitude"
-                    placeholder={props.weatherData.longitude}
+                    type="string"
+                    name="city"
+                    placeholder={props.weatherData.city}              
                 />
             </div>
             <input type="submit" className="btn btn-primary" value="Submit" />
