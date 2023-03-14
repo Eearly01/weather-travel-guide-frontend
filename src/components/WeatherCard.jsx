@@ -42,7 +42,7 @@ function WeatherCards(props) {
 							</ListGroup.Item>
 							<Button
 								onClick={(e) => {
-									props.handleDelete(props.animals)
+									handleDelete(props. wetherDays)
 								}}
 							>
 								Delete
