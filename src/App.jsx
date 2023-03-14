@@ -66,15 +66,26 @@ function App() {
 			</form>
 			<Row>
 				{weatherDays
-					? weatherDays.map((day) => {
-							return (
-								<Col sm={6} md={4}>
-									<DayWeather day={day} city={city} />
-								</Col>
-							);
-					  })
+					? weatherDays.map((day, index) => {
+							if (index % 2 === 0) {
+								return (
+									<Row>
+										<Col sm={6} md={4}>
+											<DayWeather day={day} city={city} />
+										</Col>
+										{weatherDays[index + 1] && (
+											<Col sm={6} md={4}>
+												<DayWeather day={weatherDays[index + 1]} city={city} />
+											</Col>
+										)}
+									</Row>
+								);
+							}
+							return null;
+					})
 					: ' '}
 			</Row>
+			
 		</Container>
 	);
 }
