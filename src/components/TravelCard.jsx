@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
@@ -6,20 +6,28 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
-function WeatherCards(props) {
+function TravelCards() {
+    const [travelDays, setTravelDays] = useState([]);
+    const [updated, setUpdated] = useState();
+
+    const callApi = () => {
+        axios.get('http://localhost:3000/days').then((res) => {
+            setTravelDays(res.data);
+        })
+    }
 	// handel for delete button
-	const handleDelete = (weatherData) => {
-		axios.delete(`http://localhost:3000/days/${weatherData._id}`).then(() => {
+	const handleDelete = (travelData) => {
+		axios.delete(`http://localhost:3000/days/${travelData._id}`).then(() => {
 			axios.get('http://localhost:3000/days').then((response) => {
-				props.setWeatherDays(response.data);
-				props.setUpdated(!props.updated);
+				setTravelDays(response.data);
+				setUpdated(!updated);
 			});
 		});
 	};
 
-	// 	useEffect((props) => {
-
-	// }, [props.updated])
+    useEffect(() => {
+        callApi();
+    }, [])
 
 	return (
 		<div className='weatherCards'>
@@ -29,26 +37,26 @@ function WeatherCards(props) {
 						<Card.Title className='card-title'>travel cards</Card.Title>
 						<ListGroup variant='flush'>
 							<ListGroup.Item className='card-list-text'>
-								city: {props.weatherDays.city}
+								city: {travelDays.city}
 							</ListGroup.Item>
-							<ListGroup.Item className='card-list-number'>
-								temp: {props.weatherDays.temp}
-							</ListGroup.Item>
-							<ListGroup.Item className='card-list-text'>
-								wind speed {props.weatherDays.windSpeed}
+							{/* <ListGroup.Item className='card-list-number'>
+								temp: {travelDays.temp}
 							</ListGroup.Item>
 							<ListGroup.Item className='card-list-text'>
-								wind direction: {props.weatherDays.windDirection}
+								wind speed {travelDays.windSpeed}
 							</ListGroup.Item>
 							<ListGroup.Item className='card-list-text'>
-								persipitation: {props.weatherDays.probabilityOfPrecipitation}
+								wind direction: {travelDays.windDirection}
 							</ListGroup.Item>
 							<ListGroup.Item className='card-list-text'>
-								detailed forcast: {props.weatherDays.detaledForcast}
+								persipitation: {travelDays.probabilityOfPrecipitation}
 							</ListGroup.Item>
+							<ListGroup.Item className='card-list-text'>
+								detailed forcast: {travelDays.detaledForcast}
+							</ListGroup.Item> */}
 							<Button
 								onClick={(e) => {
-									handleDelete(props.weatherDays);
+									handleDelete(travelDays);
 								}}>
 								Delete
 							</Button>
@@ -60,4 +68,4 @@ function WeatherCards(props) {
 	);
 }
 
-export default WeatherCards;
+export default TravelCards;
