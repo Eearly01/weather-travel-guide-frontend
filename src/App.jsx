@@ -34,14 +34,14 @@ function App() {
 
 	const formSubmit = (e) => {
 		e.preventDefault();
-		getCoord(e.target.city.value);
+		getCoord(e.target.city.value, e.target.state.value);
 		setUpdated(!updated);
 	};
 
-	const getCoord = (city) => {
+	const getCoord = (city,state) => {
 		axios
 			.get(
-				`https://api.tomtom.com/search/2/geocode/${city}.json?key=IvZAJEwT4tG2uDSoidDzUFkkuWgX8L5J`
+				`https://api.tomtom.com/search/2/geocode/${city} ${state}.json?key=IvZAJEwT4tG2uDSoidDzUFkkuWgX8L5J`
 			)
 			.then((res) => {
 				setCity(res.data.results[0].address);
@@ -62,6 +62,7 @@ function App() {
 			<h1>Weather Travel Guide</h1>
 			<form onSubmit={formSubmit}>
 				City: <input type='text' name='city' />
+				State: <input type='text' name='state' />
 				<input type='submit' value='Submit' />
 			</form>
 			<p>
@@ -69,26 +70,20 @@ function App() {
 					? weatherDays.map((day) => {
 							return (
 								<div>
-									<WeatherCard
+									{/* <WeatherCard
 										weatherDays={weatherDays}
 										setUpdated={setUpdated}
 										updated={updated}
 										getWeather={getWeather}
 										
-									/>
-									<DayWeather
-										day={day}
-										city={city}
-									/>
+									/> */}
+									<DayWeather day={day} city={city} />
 								</div>
-							)
-						})
+							);
+					  })
 					: ' '}
 			</p>
-			<Row>
-				
-				
-			</Row>
+			<Row></Row>
 		</Container>
 	);
 }
