@@ -23,7 +23,7 @@ function WeatherCards(props) {
 	return (
 	<div className='weatherCards'>
 		
-							return (
+							
 								<Col>
 									<Card style={{ width: '18rem' }}>
 										<Card.Body>
@@ -32,20 +32,20 @@ function WeatherCards(props) {
 											</Card.Title>
 											<ListGroup variant='flush'>
 												<ListGroup.Item className='card-list-text'>
-													city: {props.days.city}
+													city: {props.weatherDays.city}
 												</ListGroup.Item>
 												<ListGroup.Item className='card-list-text'>
-													temp: {props.days.temp}
+													temp: {props.weatherDays.temp}
 												</ListGroup.Item>
 												<ListGroup.Item className='card-list-text'>
-													wind speed {props.days.windSpeed}
+													wind speed {props.weatherDays.windSpeed}
 												</ListGroup.Item>
 												<ListGroup.Item className='card-list-text'>
-													wind direction: {props.days.windDirection}
+													wind direction: {props.weatherDays.windDirection}
 												</ListGroup.Item>
 												<ListGroup.Item className='card-list-text'>
 													persipitation:{' '}
-													{props.days.probabilityOfPrecipitation}
+													{props.weatherDays.probabilityOfPrecipitation}
 												</ListGroup.Item>
 												<ListGroup.Item className='card-list-text'>
 													detailed forcast: {props.weatherDays.detaledForcast}
@@ -61,7 +61,7 @@ function WeatherCards(props) {
 										</Card.Body>
 									</Card>
 								</Col>
-							)
+							
 	
 	</div>
 	)
