@@ -3,16 +3,18 @@ import React from 'react';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
+import Button from 'react-bootstrap/Button'
+import axios from 'axios'
 
 function WeatherCards(props) {
 
 
 
 	// handel for delete button
-	const handleDelete = (animalData) => {
-		axios.delete(`http://localhost:3000/animals/${animalData._id}`).then(() => {
-			axios.get('http://localhost:3000/animals').then((response) => {
-				setAnimals(response.data)
+	const handleDelete = (weatherData) => {
+		axios.delete(`http://localhost:3000/days/${weatherData._id}`).then(() => {
+			axios.get('http://localhost:3000/days').then((response) => {
+				props.setWeatherDays(response.data)
 			})
 		})
 	}
@@ -42,7 +44,7 @@ function WeatherCards(props) {
 							</ListGroup.Item>
 							<Button
 								onClick={(e) => {
-									handleDelete(props. wetherDays)
+									handleDelete(props.wetherDays)
 								}}
 							>
 								Delete
