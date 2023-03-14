@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react'
 
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
@@ -15,10 +15,14 @@ function WeatherCards(props) {
 		axios.delete(`http://localhost:3000/days/${weatherData._id}`).then(() => {
 			axios.get('http://localhost:3000/days').then((response) => {
 				props.setWeatherDays(response.data)
+				props.setUpdated(!props.updated)
 			})
 		})
 	}
 
+// 	useEffect((props) => {
+	
+// }, [props.updated])
 
 	return (
 	<div className='weatherCards'>
@@ -34,7 +38,7 @@ function WeatherCards(props) {
 												<ListGroup.Item className='card-list-text'>
 													city: {props.weatherDays.city}
 												</ListGroup.Item>
-												<ListGroup.Item className='card-list-text'>
+												<ListGroup.Item className='card-list-number'>
 													temp: {props.weatherDays.temp}
 												</ListGroup.Item>
 												<ListGroup.Item className='card-list-text'>
