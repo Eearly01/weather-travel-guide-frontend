@@ -23,6 +23,9 @@ function DayWeather(props) {
 					<Card.Subtitle className='mb-2 text-muted'>
 						{props.day.name}
 					</Card.Subtitle>
+					<Card.Subtitle>
+						<img src={props.day.icon} alt=''/>
+					</Card.Subtitle>
 					<ListGroup variant='flush'>
 						<ListGroup.Item>
 							Temperature: {props.day.temperature}
