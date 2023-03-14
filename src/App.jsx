@@ -58,6 +58,7 @@ function App() {
 
 	return (
 		<Container>
+			<TravelCard />
 			<h1>Weather Travel Guide</h1>
 			<form onSubmit={formSubmit}>
 				City: <input type='text' name='city' />
@@ -82,10 +83,9 @@ function App() {
 								);
 							}
 							return null;
-					})
+					  })
 					: ' '}
 			</Row>
-			
 		</Container>
 	);
 }
