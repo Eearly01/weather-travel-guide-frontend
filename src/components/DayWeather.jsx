@@ -17,28 +17,24 @@ function DayWeather(props) {
 
 	return (
 		<>
-			<Row>
-				<Col sm={6} md={4}>
-					<Card border='Primary' style={{ width: '18rem' }}>
-						<Card.Body>
-							<Card.Title>{props.city.municipality}</Card.Title>
-							<Card.Subtitle className='mb-2 text-muted'>
-								{props.day.name}
-							</Card.Subtitle>
-							<ListGroup variant='flush'>
-								<ListGroup.Item>
-									Temperature: {props.day.temperature}
-									{props.day.temperatureUnit}
-								</ListGroup.Item>
-								<ListGroup.Item>{props.day.windSpeed} Wind</ListGroup.Item>
-								<ListGroup.Item>{props.day.windDirection}</ListGroup.Item>
-								<ListGroup.Item>{props.day.detailedForecast}</ListGroup.Item>
-							</ListGroup>
-						</Card.Body>
-						<Button onClick={addToWeatherCards}>Add To Trip</Button>
-					</Card>
-				</Col>
-			</Row>
+			<Card border='Primary' style={{ width: '18rem' }}>
+				<Card.Body>
+					<Card.Title>{props.city.municipality}</Card.Title>
+					<Card.Subtitle className='mb-2 text-muted'>
+						{props.day.name}
+					</Card.Subtitle>
+					<ListGroup variant='flush'>
+						<ListGroup.Item>
+							Temperature: {props.day.temperature}
+							{props.day.temperatureUnit}
+						</ListGroup.Item>
+						<ListGroup.Item>{props.day.windSpeed} Wind</ListGroup.Item>
+						<ListGroup.Item>{props.day.windDirection}</ListGroup.Item>
+						<ListGroup.Item>{props.day.detailedForecast}</ListGroup.Item>
+					</ListGroup>
+				</Card.Body>
+				<Button onClick={addToWeatherCards}>Add To Trip</Button>
+			</Card>
 		</>
 	);
 }
