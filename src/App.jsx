@@ -13,11 +13,8 @@ import DayWeather from './components/DayWeather';
 function App() {
 	const [travelDay, setTravelDay] = useState(null);
 	const [weatherDays, setWeatherDays] = useState([]);
-	const [destination, setDestination] = useState('');
-	const [formData, setFormData] = useState({});
 	const [updated, setUpdated] = useState(false);
-	//   const [lat, setLat] = useState(null);
-	//   const [lon, setLon] = useState(null);
+	const [city, setCity] = useState({});
 
 	const getTravel = () => {
 		axios.get('http://localhost:3000/days').then((res) => {
@@ -37,11 +34,6 @@ function App() {
 
 	const formSubmit = (e) => {
 		e.preventDefault();
-		// console.log(e.target.lat.value);
-		console.log(e.target.city.value);
-		// setLat(e.target.lat.value);
-		// setLon(e.target.lon.value);
-		// getWeather(e.target.lon.value, e.target.lat.value);
 		getCoord(e.target.city.value);
 		setUpdated(!updated);
 	};
@@ -52,7 +44,7 @@ function App() {
 				`https://api.tomtom.com/search/2/geocode/${city}.json?key=IvZAJEwT4tG2uDSoidDzUFkkuWgX8L5J`
 			)
 			.then((res) => {
-				console.log(res.data.results[0]);
+				setCity(res.data.results[0].address);
 				let lat = res.data.results[0].position.lat;
 				let lon = res.data.results[0].position.lon;
 				console.log(lat);
@@ -60,10 +52,6 @@ function App() {
 			});
 	};
 
-	// const cityOrCoord = (e) => {
-	//   console.log(e.target.name.value);
-	//   getCoord(e.target.name.value);
-	// }
 
 	useEffect(() => {
 		getWeather();
@@ -73,8 +61,6 @@ function App() {
 		<Container>
 			<h1>Weather Travel Guide</h1>
 			<form onSubmit={formSubmit}>
-				{/* Latitude: <input type='text' name='lat' />
-				Longitude: <input type='text' name='lon' /> */}
 				City: <input type='text' name='city' />
 				<input type='submit' value='Submit' />
 			</form>
@@ -92,6 +78,7 @@ function App() {
 									/>
 									<DayWeather
 										day={day}
+										city={city}
 									/>
 								</div>
 							)

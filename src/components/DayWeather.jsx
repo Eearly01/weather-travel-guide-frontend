@@ -23,13 +23,18 @@ function DayWeather(props) {
 		<>
 			<Card style={{ width: '18rem' }}>
 				<Card.Body>
-					<Card.Title>{props.day.name}</Card.Title>
+					<Card.Title>{props.city.municipality}</Card.Title>
 					<Card.Subtitle className='mb-2 text-muted'>
-						Card Subtitle
+						{props.day.name}
 					</Card.Subtitle>
 					<Card.Text>
-						Some quick example text to build on the card title and make up the
-						bulk of the card's content.
+						<p>
+							{props.day.temperature}
+							{props.day.temperatureUnit}
+						</p>
+						<p>{props.day.windSpeed}</p>
+						<p>{props.day.windDirection}</p>
+						<p>{props.day.detailedForecast}</p>
 					</Card.Text>
 				</Card.Body>
 			</Card>
