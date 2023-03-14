@@ -13,7 +13,7 @@ const UpdateWeatherCardFrom = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         axios
-            .putt('http://localhost:3000/days', {
+            .put('http://localhost:3000/days', {
                 latitude: formData.latitude,
                 longitude: formData.longitude,
             })
