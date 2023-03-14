@@ -1,9 +1,6 @@
 import React, { useEffect } from 'react';
 
-import Col from 'react-bootstrap/Col';
-import {Card} from 'react-bootstrap';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Button from 'react-bootstrap/Button';
+import { Card, Col, ListGroup, Button } from 'react-bootstrap';
 import axios from 'axios';
 
 function DayWeather(props) {
@@ -21,7 +18,7 @@ function DayWeather(props) {
 
 	return (
 		<>
-			<Col>
+			<Col sm={6} md={4}>
 				<Card border='Primary' style={{ width: '18rem' }}>
 					<Card.Body>
 						<Card.Title>{props.city.municipality}</Card.Title>
@@ -29,17 +26,15 @@ function DayWeather(props) {
 							{props.day.name}
 						</Card.Subtitle>
 						<Card.Text>
-							<p>
-								{props.day.temperature}
-								{props.day.temperatureUnit}
-							</p>
-							<p>{props.day.windSpeed}</p>
-							<p>{props.day.windDirection}</p>
-							<p>{props.day.detailedForecast}</p>
+							{props.day.temperature}
+							{props.day.temperatureUnit}
 						</Card.Text>
+						<Card.Text>{props.day.windSpeed}</Card.Text>
+						<Card.Text>{props.day.windDirection}</Card.Text>
+						<Card.Text>{props.day.detailedForecast}</Card.Text>
 					</Card.Body>
+					<Button onClick={addToWeatherCards}>Add To Trip</Button>
 				</Card>
-				<Button onClick={addToWeatherCards}>Add To Trip</Button>
 			</Col>
 		</>
 	);
