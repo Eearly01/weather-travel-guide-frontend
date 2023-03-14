@@ -8,7 +8,7 @@ import Row from 'react-bootstrap/Row';
 
 // My Components
 import WeatherCard from './components/WeatherCard.jsx';
-
+import DayWeather from './components/DayWeather';
 
 function App() {
 	const [travelDay, setTravelDay] = useState(null);
@@ -80,7 +80,7 @@ function App() {
 			</form>
 			<p>
 				{weatherDays
-					? weatherDays.map((days) => {
+					? weatherDays.map((day) => {
 							return (
 								<div>
 									<WeatherCard
@@ -90,8 +90,9 @@ function App() {
 										getWeather={getWeather}
 										
 									/>
-									{days.name}
-									{days.temperature}
+									<DayWeather
+										day={day}
+									/>
 								</div>
 							)
 						})
