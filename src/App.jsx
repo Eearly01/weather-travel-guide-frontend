@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './App.css';
 // Bootstrap Components
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
