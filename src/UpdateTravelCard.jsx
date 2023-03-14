@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 import {Col} from 'react-bootstrap'
 
-const UpdateWeatherCardFrom = (props) => {
+const UpdateTravelCard = (props) => {
     const [formData, setFormData] = useState({})
 
     const handleChange = (e) => {
@@ -14,8 +14,7 @@ const UpdateWeatherCardFrom = (props) => {
         e.preventDefault()
         axios
             .put('http://localhost:3000/days', {
-                latitude: formData.latitude,
-                longitude: formData.longitude,
+                city: formData.city
             })
         .then((res) => {
             props.setUpdated(!props.updated)
