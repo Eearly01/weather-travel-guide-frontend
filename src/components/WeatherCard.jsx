@@ -5,39 +5,54 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 
 function WeatherCards(props) {
-	return ( <>
-    
-    </>
-		// <div className='weatherCards'>
-		// 	<Col>
-		// 		<Card style={{ width: '18rem' }}>
-		// 			<Card.Img variant='top' src={props.animals.image} alt='' />
-		// 			<Card.Body>
-		// 				<Card.Title className='card-title'>
-		// 					{/* name of city location */}
-		// 				</Card.Title>
-		// 				<ListGroup variant='flush'>
-		// 					<ListGroup.Item className='card-list-text'>
-		// 						{/* temp */}
-		// 					</ListGroup.Item>
-		// 					<ListGroup.Item className='card-list-text'>
-		// 						{/* windspeed */}
-		// 					</ListGroup.Item>
-		// 					<ListGroup.Item className='card-list-text'>
-		// 						{/* wind direction */}
-		// 					</ListGroup.Item>
-		// 					<ListGroup.Item className='card-list-text'>
-		// 						{/* persipitation */}
-		// 					</ListGroup.Item>
-		// 					<ListGroup.Item className='card-list-text'>
-		// 						{/* detailed forcast */}
-		// 					</ListGroup.Item>
-		// 				</ListGroup>
-		// 			</Card.Body>
-		// 		</Card>
-		// 	</Col>
-		//</div>
-	);
+
+
+
+	// handel for delete button
+	const handleDelete = (animalData) => {
+		axios.delete(`http://localhost:3000/animals/${animalData._id}`).then(() => {
+			axios.get('http://localhost:3000/animals').then((response) => {
+				setAnimals(response.data)
+			})
+		})
+	}
+
+
+	return (
+		<div className='weatherCards'>
+			<Col>
+				<Card style={{ width: '18rem' }}>
+					<Card.Body>
+						<Card.Title className='card-title'>travel cards</Card.Title>
+						<ListGroup variant='flush'>
+							<ListGroup.Item className='card-list-text'>
+								temp: {props.wetherDays.temp}
+							</ListGroup.Item>
+							<ListGroup.Item className='card-list-text'>
+								wind speed {props.wetherDays.windSpeed}
+							</ListGroup.Item>
+							<ListGroup.Item className='card-list-text'>
+								wind direction: {props.wetherDays.windDirection}
+							</ListGroup.Item>
+							<ListGroup.Item className='card-list-text'>
+								persipitation: {props.wetherDays.probabilityOfPrecipitation}
+							</ListGroup.Item>
+							<ListGroup.Item className='card-list-text'>
+								detailed forcast: {props.wetherDays.detaledForcast}
+							</ListGroup.Item>
+							<Button
+								onClick={(e) => {
+									props.handleDelete(props.animals)
+								}}
+							>
+								Delete
+							</Button>
+						</ListGroup>
+					</Card.Body>
+				</Card>
+			</Col>
+		</div>
+	)
 }
 
 export default WeatherCards;
