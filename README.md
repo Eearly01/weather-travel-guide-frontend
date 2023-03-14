@@ -35,4 +35,4 @@
 
 ![Wire Framework](img\project3_wireframe3.png)
 ![Wire Framework](img\project3_wireframe2.png)
-![Wire Framework](img\project3_wireframe1.png)
+![Wire Framework](weather-travel-guide-frontend\img\project3_wireframe1.png)
