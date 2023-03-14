@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-
-import { Card, Col, ListGroup, Button } from 'react-bootstrap';
+import { Card, Col, ListGroup, Button, Row } from 'react-bootstrap';
 import axios from 'axios';
 
 function DayWeather(props) {
@@ -18,24 +17,28 @@ function DayWeather(props) {
 
 	return (
 		<>
-			<Col sm={6} md={4}>
-				<Card border='Primary' style={{ width: '18rem' }}>
-					<Card.Body>
-						<Card.Title>{props.city.municipality}</Card.Title>
-						<Card.Subtitle className='mb-2 text-muted'>
-							{props.day.name}
-						</Card.Subtitle>
-						<Card.Text>
-							{props.day.temperature}
-							{props.day.temperatureUnit}
-						</Card.Text>
-						<Card.Text>{props.day.windSpeed}</Card.Text>
-						<Card.Text>{props.day.windDirection}</Card.Text>
-						<Card.Text>{props.day.detailedForecast}</Card.Text>
-					</Card.Body>
-					<Button onClick={addToWeatherCards}>Add To Trip</Button>
-				</Card>
-			</Col>
+			<Row>
+				<Col sm={6} md={4}>
+					<Card border='Primary' style={{ width: '18rem' }}>
+						<Card.Body>
+							<Card.Title>{props.city.municipality}</Card.Title>
+							<Card.Subtitle className='mb-2 text-muted'>
+								{props.day.name}
+							</Card.Subtitle>
+							<ListGroup variant='flush'>
+								<ListGroup.Item>
+									Temperature: {props.day.temperature}
+									{props.day.temperatureUnit}
+								</ListGroup.Item>
+								<ListGroup.Item>{props.day.windSpeed} Wind</ListGroup.Item>
+								<ListGroup.Item>{props.day.windDirection}</ListGroup.Item>
+								<ListGroup.Item>{props.day.detailedForecast}</ListGroup.Item>
+							</ListGroup>
+						</Card.Body>
+						<Button onClick={addToWeatherCards}>Add To Trip</Button>
+					</Card>
+				</Col>
+			</Row>
 		</>
 	);
 }

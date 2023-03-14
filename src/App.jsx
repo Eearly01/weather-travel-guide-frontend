@@ -70,17 +70,10 @@ function App() {
 					? weatherDays.map((day) => {
 							return (
 								<div>
-									{/* <TravelCard
-										weatherDays={weatherDays}
-										setUpdated={setUpdated}
-										updated={updated}
-										getWeather={getWeather}
-										
-									/> */}
 									<DayWeather day={day} city={city} />
 								</div>
 							);
-					  })
+					})
 					: ' '}
 			</p>
 			<Row></Row>
