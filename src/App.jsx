@@ -38,7 +38,7 @@ function App() {
 		setUpdated(!updated);
 	};
 
-	const getCoord = (city,state) => {
+	const getCoord = (city, state) => {
 		axios
 			.get(
 				`https://api.tomtom.com/search/2/geocode/${city} ${state}.json?key=IvZAJEwT4tG2uDSoidDzUFkkuWgX8L5J`
@@ -52,7 +52,6 @@ function App() {
 			});
 	};
 
-
 	useEffect(() => {
 		getWeather();
 	}, [updated]);
@@ -65,18 +64,17 @@ function App() {
 				State: <input type='text' name='state' />
 				<input type='submit' value='Submit' />
 			</form>
-			<p>
+			<Row>
 				{weatherDays
 					? weatherDays.map((day) => {
 							return (
-								<div>
+								<Col sm={6} md={4}>
 									<DayWeather day={day} city={city} />
-								</div>
+								</Col>
 							);
-					})
+					  })
 					: ' '}
-			</p>
-			<Row></Row>
+			</Row>
 		</Container>
 	);
 }
