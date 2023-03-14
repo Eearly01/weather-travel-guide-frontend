@@ -83,15 +83,18 @@ function App() {
 					? weatherDays.map((days) => {
 							return (
 								<div>
+									<WeatherCard 
+									weatherDays={weatherDays}
+									/>
 									{days.name}
 									{days.temperature}
 								</div>
 							);
-					  })
+						})
 					: ' '}
 			</p>
 			<Row>
-				{/* <WeatherCard /> */}
+				
 				
 			</Row>
 		</Container>
