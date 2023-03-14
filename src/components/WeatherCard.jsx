@@ -28,23 +28,23 @@ function WeatherCards(props) {
 						<Card.Title className='card-title'>travel cards</Card.Title>
 						<ListGroup variant='flush'>
 							<ListGroup.Item className='card-list-text'>
-								temp: {props.wetherDays.temp}
+								temp: {props.weatherDays.temp}
 							</ListGroup.Item>
 							<ListGroup.Item className='card-list-text'>
-								wind speed {props.wetherDays.windSpeed}
+								wind speed {props.weatherDays.windSpeed}
 							</ListGroup.Item>
 							<ListGroup.Item className='card-list-text'>
-								wind direction: {props.wetherDays.windDirection}
+								wind direction: {props.weatherDays.windDirection}
 							</ListGroup.Item>
 							<ListGroup.Item className='card-list-text'>
-								persipitation: {props.wetherDays.probabilityOfPrecipitation}
+								persipitation: {props.weatherDays.probabilityOfPrecipitation}
 							</ListGroup.Item>
 							<ListGroup.Item className='card-list-text'>
-								detailed forcast: {props.wetherDays.detaledForcast}
+								detailed forcast: {props.weatherDays.detaledForcast}
 							</ListGroup.Item>
 							<Button
 								onClick={(e) => {
-									handleDelete(props.wetherDays)
+									handleDelete(props.weatherDays)
 								}}
 							>
 								Delete
