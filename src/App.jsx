@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
 // My Components
-import WeatherCard from './components/WeatherCard.jsx';
+import TravelCard from './components/TravelCard.jsx';
 import DayWeather from './components/DayWeather';
 
 function App() {
@@ -70,7 +70,7 @@ function App() {
 					? weatherDays.map((day) => {
 							return (
 								<div>
-									{/* <WeatherCard
+									{/* <TravelCard
 										weatherDays={weatherDays}
 										setUpdated={setUpdated}
 										updated={updated}
