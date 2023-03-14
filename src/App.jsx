@@ -8,7 +8,7 @@ import Row from 'react-bootstrap/Row';
 
 // My Components
 import WeatherCard from './components/WeatherCard.jsx';
-import TravelCard from './components/TravelCard.jsx';
+
 
 function App() {
 	const [travelDay, setTravelDay] = useState(null);
@@ -92,7 +92,7 @@ function App() {
 			</p>
 			<Row>
 				{/* <WeatherCard /> */}
-				<TravelCard />
+				
 			</Row>
 		</Container>
 	);
