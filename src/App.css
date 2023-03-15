@@ -3,8 +3,8 @@
     min-height: 100vh;
     height: 100%;
 }
-/* .weatherCards {
+.weatherCards {
     border: red solid 3px;
     overflow-y: scroll;
     
-} */
+}
