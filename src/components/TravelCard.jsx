@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import Row from 'react-bootstrap/Row'
 
 function TravelCards() {
     const [travelDays, setTravelDays] = useState([]);
@@ -32,44 +33,49 @@ function TravelCards() {
 
 	return (
 	<div className='weatherCards'>
-		{travelDays.map((travelDays) => {
+		<Row xs={2} md={3} >
+		{travelDays.map((travelDays,) => {
 			return (
-			<Col>
-				<Card style={{ width: '18rem' }}>
-					<Card.Body>
-						<Card.Title className='card-title'>travel cards</Card.Title>
-						<ListGroup variant='flush'>
-							<ListGroup.Item className='card-list-text'>
-								city: {travelDays.city}
-							</ListGroup.Item>
-							<ListGroup.Item className='card-list-number'>
-								temp: {travelDays.temp}
-							</ListGroup.Item>
-							<ListGroup.Item className='card-list-text'>
-								wind speed {travelDays.windSpeed}
-							</ListGroup.Item>
-							<ListGroup.Item className='card-list-text'>
-								wind direction: {travelDays.windDirection}
-							</ListGroup.Item>
-							<ListGroup.Item className='card-list-text'>
-								precipitation: {travelDays.probabilityOfPrecipitation.value}
-							</ListGroup.Item>
-							<ListGroup.Item className='card-list-text'>
-								detailed forecast: {travelDays.detailedForecast}
-							</ListGroup.Item>
-							<Button
-								onClick={(e) => {
-									handleDelete(travelDays);
-								}}>
-								Delete
-							</Button>
-						</ListGroup>
-					</Card.Body>
-				</Card>
-			</Col>
-		
-		)
+				<Col>
+					<Card style={{ width: '18rem' }}>
+						<Card.Body>
+							<Card.Title className='card-title'>travel cards</Card.Title>
+							<ListGroup variant='flush'>
+								{/* <ListGroup.Item className='card-list-text'>
+									day: {travelDays.name}
+								</ListGroup.Item> */}
+								<ListGroup.Item className='card-list-text'>
+									city: {travelDays.city}
+								</ListGroup.Item>
+								<ListGroup.Item className='card-list-number'>
+									temp: {travelDays.temp}
+								</ListGroup.Item>
+								<ListGroup.Item className='card-list-text'>
+									wind speed {travelDays.windSpeed}
+								</ListGroup.Item>
+								<ListGroup.Item className='card-list-text'>
+									wind direction: {travelDays.windDirection}
+								</ListGroup.Item>
+								<ListGroup.Item className='card-list-text'>
+									precipitation: {travelDays.probabilityOfPrecipitation.value}
+								</ListGroup.Item>
+								<ListGroup.Item className='card-list-text'>
+									detailed forecast: {travelDays.detailedForecast}
+								</ListGroup.Item>
+								<Button
+									onClick={(e) => {
+										handleDelete(travelDays)
+									}}
+								>
+									Delete
+								</Button>
+							</ListGroup>
+						</Card.Body>
+					</Card>
+				</Col>
+			)
 		})}
+		</Row>
 		</div>
 	);
 }
