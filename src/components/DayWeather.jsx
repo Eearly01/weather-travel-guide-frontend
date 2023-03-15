@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
-import { Card, Col, ListGroup, Button, Row } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Card, ListGroup, Button } from 'react-bootstrap';
 import axios from 'axios';
 
 function DayWeather(props) {
+	const [updated, setUpdated] = useState();
+
 	const addToWeatherCards = (e) => {
 		e.preventDefault();
 		axios.post('http://localhost:3000/days', {
@@ -13,8 +15,15 @@ function DayWeather(props) {
 			windDirection: props.day.windDirection,
 			probabilityOfPrecipitation: props.day.probabilityOfPrecipitation.value,
 			detailedForecast: props.day.detailedForecast,
-		});
+		}).then(() => {
+			setUpdated(!updated);
+		})
+		
 	};
+
+	useEffect(() => {
+		props.callApi();
+	}, [updated]);
 
 	return (
 		<>
