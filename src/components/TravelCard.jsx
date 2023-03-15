@@ -9,7 +9,7 @@ import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 
 function TravelCards(props) {
-	const [updated, setUpdated] = useState();
+	const [updated, setUpdated] = useState(false);
 
 	// handel for delete button
 	const handleDelete = (travelData) => {
@@ -40,9 +40,9 @@ function TravelCards(props) {
 	return (
 		<div className='weatherCards'>
 			<Row xs={2} md={3}>
-				{props.travelDays.map((travelDay) => {
+				{props.travelDays.map((travelDay, i) => {
 					return (
-						<Col>
+						<Col key = {i}>
 							<Card style={{ width: '18rem' }}>
 								<Card.Body>
 									<Card.Title className='card-title'>travel cards</Card.Title>
