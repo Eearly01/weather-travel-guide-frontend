@@ -17,9 +17,11 @@ function App() {
 	const [travelDays, setTravelDays] = useState([]);
 
 	const callApi = () => {
-		axios.get('http://localhost:3000/days').then((res) => {
-			setTravelDays(res.data);
-		});
+		axios
+			.get('https://weather-travel-guide-backend.onrender.com/days')
+			.then((res) => {
+				setTravelDays(res.data);
+			});
 	};
 
 	const getWeather = (lat, lon) => {

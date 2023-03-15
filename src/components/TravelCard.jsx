@@ -13,8 +13,8 @@ function TravelCards(props) {
 
 	// handel for delete button
 	const handleDelete = (travelData) => {
-		axios.delete(`http://localhost:3000/days/${travelData}`).then(() => {
-			axios.get('http://localhost:3000/days').then((response) => {
+		axios.delete(`https://weather-travel-guide-backend.onrender.com/days/${travelData}`).then(() => {
+			axios.get('https://weather-travel-guide-backend.onrender.com/days').then((response) => {
 				props.setTravelDays(response.data);
 				setUpdated(!updated);
 			});
@@ -24,7 +24,7 @@ function TravelCards(props) {
 	const handleSubmit = (e, id) => {
 		e.preventDefault();
 		axios
-			.put(`http://localhost:3000/days/${id}`, {
+			.put(`https://weather-travel-guide-backend.onrender.com/days/${id}`, {
 				planner: e.target.description.value,
 			})
 			.then((res) => {

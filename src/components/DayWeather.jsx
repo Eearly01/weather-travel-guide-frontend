@@ -7,17 +7,19 @@ function DayWeather(props) {
 
 	const addToWeatherCards = (e) => {
 		e.preventDefault();
-		axios.post('http://localhost:3000/days', {
-			number: props.day.number,
-			city: props.city.municipality,
-			temp: props.day.temperature,
-			windSpeed: props.day.windSpeed,
-			windDirection: props.day.windDirection,
-			probabilityOfPrecipitation: props.day.probabilityOfPrecipitation.value,
-			detailedForecast: props.day.detailedForecast,
-		}).then(() => {
-			setUpdated(!updated);
-		})
+		axios
+			.post('https://weather-travel-guide-backend.onrender.com/days', {
+				number: props.day.number,
+				city: props.city.municipality,
+				temp: props.day.temperature,
+				windSpeed: props.day.windSpeed,
+				windDirection: props.day.windDirection,
+				probabilityOfPrecipitation: props.day.probabilityOfPrecipitation.value,
+				detailedForecast: props.day.detailedForecast,
+			})
+			.then(() => {
+				setUpdated(!updated);
+			});
 		
 	};
 
