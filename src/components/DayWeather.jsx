@@ -3,7 +3,7 @@ import { Card, ListGroup, Button } from 'react-bootstrap';
 import axios from 'axios';
 
 function DayWeather(props) {
-	const [updated, setUpdated] = useState();
+	const [updated, setUpdated] = useState(false);
 
 	const addToWeatherCards = (e) => {
 		e.preventDefault();

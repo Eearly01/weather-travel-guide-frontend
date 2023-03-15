@@ -23,13 +23,12 @@ function App() {
 	};
 
 	const getWeather = (lat, lon) => {
-		console.log(lat);
-		axios.get(`https://api.weather.gov/points/${lat},${lon}`).then((res) => {
+		lat ? axios.get(`https://api.weather.gov/points/${lat},${lon}`).then((res) => {
 			axios.get(res.data.properties.forecast).then((weatherRes) => {
 				const weatherData = weatherRes.data.properties.periods;
 				setWeatherDays(weatherData);
 			});
-		});
+		}) : console.log('Hey');
 	};
 
 	const formSubmit = (e) => {
@@ -71,10 +70,10 @@ function App() {
 			</form>
 			<Row>
 				{weatherDays
-					? weatherDays.map((day, index) => {
-							if (index % 2 === 0) {
+					? weatherDays.map((day, i) => {
+							if (i % 2 === 0) {
 								return (
-									<Row>
+									<Row key = {i}>
 										<Col sm={6} md={4}>
 											<DayWeather
 												day={day}
@@ -84,10 +83,10 @@ function App() {
 												callApi={callApi}
 											/>
 										</Col>
-										{weatherDays[index + 1] && (
+										{weatherDays[i + 1] && (
 											<Col sm={6} md={4}>
 												<DayWeather
-													day={weatherDays[index + 1]}
+													day={weatherDays[i + 1]}
 													city={city}
 													travelDays={travelDays}
 													setTravelDays={setTravelDays}
