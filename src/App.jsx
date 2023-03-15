@@ -11,14 +11,14 @@ import TravelCard from './components/TravelCard.jsx';
 import DayWeather from './components/DayWeather';
 
 function App() {
-	const [travelDay, setTravelDay] = useState(null);
 	const [weatherDays, setWeatherDays] = useState([]);
 	const [updated, setUpdated] = useState(false);
 	const [city, setCity] = useState({});
+	const [travelDays, setTravelDays] = useState([]);
 
-	const getTravel = () => {
+	const callApi = () => {
 		axios.get('http://localhost:3000/days').then((res) => {
-			setTravelDay(res.data);
+			setTravelDays(res.data);
 		});
 	};
 
@@ -58,7 +58,11 @@ function App() {
 
 	return (
 		<Container>
-			<TravelCard />
+			<TravelCard 
+			travelDays = {travelDays}
+			setTravelDays = {setTravelDays}
+			callApi = {callApi}
+			/>
 			<h1>Weather Travel Guide</h1>
 			<form onSubmit={formSubmit}>
 				City: <input type='text' name='city' />
@@ -72,18 +76,30 @@ function App() {
 								return (
 									<Row>
 										<Col sm={6} md={4}>
-											<DayWeather day={day} city={city} />
+											<DayWeather
+												day={day}
+												city={city}
+												travelDays={travelDays}
+												setTravelDays={setTravelDays}
+												callApi={callApi}
+											/>
 										</Col>
 										{weatherDays[index + 1] && (
 											<Col sm={6} md={4}>
-												<DayWeather day={weatherDays[index + 1]} city={city} />
+												<DayWeather
+													day={weatherDays[index + 1]}
+													city={city}
+													travelDays={travelDays}
+													setTravelDays={setTravelDays}
+													callApi={callApi}
+												/>
 											</Col>
 										)}
 									</Row>
 								);
 							}
 							return null;
-					  })
+					})
 					: ' '}
 			</Row>
 		</Container>

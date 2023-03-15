@@ -8,20 +8,14 @@ import axios from 'axios';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 
-function TravelCards() {
-	const [travelDays, setTravelDays] = useState([]);
+function TravelCards(props) {
 	const [updated, setUpdated] = useState();
 
-	const callApi = () => {
-		axios.get('http://localhost:3000/days').then((res) => {
-			setTravelDays(res.data);
-		});
-	};
 	// handel for delete button
 	const handleDelete = (travelData) => {
 		axios.delete(`http://localhost:3000/days/${travelData}`).then(() => {
 			axios.get('http://localhost:3000/days').then((response) => {
-				setTravelDays(response.data);
+				props.setTravelDays(response.data);
 				setUpdated(!updated);
 			});
 		});
@@ -40,13 +34,13 @@ function TravelCards() {
 	};
 
 	useEffect(() => {
-		callApi();
-	}, []);
+		props.callApi();
+	}, [updated]);
 
 	return (
 		<div className='weatherCards'>
 			<Row xs={2} md={3}>
-				{travelDays.map((travelDay) => {
+				{props.travelDays.map((travelDay) => {
 					return (
 						<Col>
 							<Card style={{ width: '18rem' }}>
