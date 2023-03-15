@@ -6,6 +6,7 @@ function DayWeather(props) {
 	const addToWeatherCards = (e) => {
 		e.preventDefault();
 		axios.post('http://localhost:3000/days', {
+			number: props.day.number,
 			city: props.city.municipality,
 			temp: props.day.temperature,
 			windSpeed: props.day.windSpeed,
