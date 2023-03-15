@@ -12,8 +12,6 @@ function TravelCards() {
 	const [travelDays, setTravelDays] = useState([]);
 	const [updated, setUpdated] = useState();
 
-	const [updatePlan, setUpdatePlan] = useState('');
-
 	const callApi = () => {
 		axios.get('http://localhost:3000/days').then((res) => {
 			setTravelDays(res.data);
@@ -21,7 +19,7 @@ function TravelCards() {
 	};
 	// handel for delete button
 	const handleDelete = (travelData) => {
-		axios.delete(`http://localhost:3000/days/${travelData._id}`).then(() => {
+		axios.delete(`http://localhost:3000/days/${travelData}`).then(() => {
 			axios.get('http://localhost:3000/days').then((response) => {
 				setTravelDays(response.data);
 				setUpdated(!updated);
@@ -29,34 +27,17 @@ function TravelCards() {
 		});
 	};
 
-		const handleChange = (e) => {
-			e.preventDefault()
-			setUpdatePlan(e.target.planner.value)
-			setUpdated(!updated)
-		}
-
-	// 		const handleSubmit = (e) => {
-	// 			e.preventDefault()
-	// 			axios.put(`http://localhost:3000/days/${travelDay._id}`, {
-	//         // updatePlan: setUpdatePlan
-	//       })
-	//       .then((res) => {
-	//         setUpdated(!updated);
-	//       })
-	//       .catch((err) => console.log(err));
-	//   };
-
-		const handleSubmit = (e, id) => {
-			e.preventDefault();
-			axios.put(`http://localhost:3000/days/${id}`, {
-	        planner: e.target.description.value
-	      })
-	      .then((res) => {
-	        setUpdated(!updated);
-	      })
-	      .catch((err) => console.log(err));
-	  };
-
+	const handleSubmit = (e, id) => {
+		e.preventDefault();
+		axios
+			.put(`http://localhost:3000/days/${id}`, {
+				planner: e.target.description.value,
+			})
+			.then((res) => {
+				setUpdated(!updated);
+			})
+			.catch((err) => console.log(err));
+	};
 
 	useEffect(() => {
 		callApi();
@@ -73,8 +54,8 @@ function TravelCards() {
 									<Card.Title className='card-title'>travel cards</Card.Title>
 									<ListGroup variant='flush'>
 										<ListGroup.Item className='card-list-text'>
-									day: {travelDay.name}
-								</ListGroup.Item>
+											day: {travelDay.name}
+										</ListGroup.Item>
 										<ListGroup.Item className='card-list-text'>
 											city: {travelDay.city}
 										</ListGroup.Item>
@@ -95,19 +76,21 @@ function TravelCards() {
 											detailed forecast: {travelDay.detailedForecast}
 										</ListGroup.Item>
 										<ListGroup.Item className='card-list-text'>
-									<Form onSubmit= {(e) => {handleSubmit(e,travelDay._id)}}>
-										<label>Plan: {travelDay.planner}</label>
-										<input
-											//onChange={handleChange}
-											className='form-control'
-											type='text'
-											name='description'
-											placeholder={travelDay.planner}
-											value={travelDay.planner}
-										/>
-										<input type='submit' value='update' />
-									</Form>
-								</ListGroup.Item>
+											<Form
+												onSubmit={(e) => {
+													handleSubmit(e, travelDay._id);
+												}}>
+												<label>Plan: {travelDay.planner}</label>
+												<input
+													className='form-control'
+													type='text'
+													name='description'
+													placeholder={travelDay.planner}
+													value={travelDay.planner}
+												/>
+												<input type='submit' value='update' />
+											</Form>
+										</ListGroup.Item>
 										<Button
 											onClick={(e) => {
 												handleDelete(travelDay._id);
