@@ -13,6 +13,7 @@ function TravelCards() {
     const callApi = () => {
         axios.get('http://localhost:3000/days').then((res) => {
             setTravelDays(res.data);
+			
         })
     }
 	// handel for delete button
@@ -30,7 +31,9 @@ function TravelCards() {
     }, [])
 
 	return (
-		<div className='weatherCards'>
+	<div className='weatherCards'>
+		{travelDays.map((travelDays) => {
+			return (
 			<Col>
 				<Card style={{ width: '18rem' }}>
 					<Card.Body>
@@ -39,7 +42,7 @@ function TravelCards() {
 							<ListGroup.Item className='card-list-text'>
 								city: {travelDays.city}
 							</ListGroup.Item>
-							{/* <ListGroup.Item className='card-list-number'>
+							<ListGroup.Item className='card-list-number'>
 								temp: {travelDays.temp}
 							</ListGroup.Item>
 							<ListGroup.Item className='card-list-text'>
@@ -49,11 +52,11 @@ function TravelCards() {
 								wind direction: {travelDays.windDirection}
 							</ListGroup.Item>
 							<ListGroup.Item className='card-list-text'>
-								persipitation: {travelDays.probabilityOfPrecipitation}
+								precipitation: {travelDays.probabilityOfPrecipitation.value}
 							</ListGroup.Item>
 							<ListGroup.Item className='card-list-text'>
-								detailed forcast: {travelDays.detaledForcast}
-							</ListGroup.Item> */}
+								detailed forecast: {travelDays.detailedForecast}
+							</ListGroup.Item>
 							<Button
 								onClick={(e) => {
 									handleDelete(travelDays);
@@ -64,6 +67,9 @@ function TravelCards() {
 					</Card.Body>
 				</Card>
 			</Col>
+		
+		)
+		})}
 		</div>
 	);
 }

@@ -11,7 +11,7 @@ function DayWeather(props) {
 			windSpeed: props.day.windSpeed,
 			windDirection: props.day.windDirection,
 			probabilityOfPrecipitation: props.day.probabilityOfPrecipitation.value,
-			detailedForcast: props.day.detailedForcast,
+			detailedForecast: props.day.detailedForecast,
 		});
 	};
 
