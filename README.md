@@ -27,29 +27,25 @@
 
 - Bailey Rechkemmer
 
-### live link
-
-- 
-
 ### Wire Framework
 
 ![Wire Framework](img/project3_wireframe3.png)
 ![Wire Framework](img/project3_wireframe2.png)
 ![Wire Framework](img/project3_wireframe1.png)
 
-### Notes fgor latter
+### Notes for latter
 
-- this app is a trip planer that allows the user to save the wether for the days they will be in a location. as of now it is pulling from a 3rd part api for the wether info in the area as well as pulling from an additional 3rd party api for translating the city name in to latitude and longitude cordanance. the user can see the forecast for the week and select wether cards to add the the trip box as well as add and change plans and delete cards as needed. we would like to add      if we had more time. in the future we would like to add       to the website 
+- this app is a trip planer that allows the user to save the wether for the days they will be in a location. as of now it is pulling from a 3rd part api for the wether info in the area as well as pulling from an additional 3rd party api for translating the city name in to latitude and longitude coordinates. the user can see the forecast for the week and select wether cards to add the the trip box as well as add and change plans and delete cards as needed. we would like to add      if we had more time. in the future we would like to add       to the website 
 
-### stretch goal user storyies
+### stretch goal user stories
 
-- 
+- add in the number variable to travel cards {}
 
-- 
+- getting the third party api for geo tagging to convert city names into coordinates and give the weather api the info in need to pull the information. {x}
 
-- 
+- add a drop down function for the travel cards to show info on cards when clicked on. {} 
 
-- 
+- adding in a window for the travel cards to be displayed. {}
 
 ### live link
 
