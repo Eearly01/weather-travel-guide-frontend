@@ -29,7 +29,8 @@ function DayWeather(props) {
 				if (existingCardIndex !== -1) {
 					// Delete the existing card with the same number
 					const deleteUrl =
-						'https://weather-travel-guide-backend.onrender.com/days/' + res.data[existingCardIndex]._id;
+						'https://weather-travel-guide-backend.onrender.com/days/' +
+						res.data[existingCardIndex]._id;
 					axios
 						.delete(deleteUrl)
 						.then(() => {
