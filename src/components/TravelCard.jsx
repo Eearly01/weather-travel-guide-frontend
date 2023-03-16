@@ -48,13 +48,13 @@ function TravelCards(props) {
 									<Card.Title className='card-title'>travel cards</Card.Title>
 									<ListGroup variant='flush'>
 										<ListGroup.Item className='card-list-text'>
-											day: {travelDay.name}
+											day: {travelDay.dayName}
 										</ListGroup.Item>
 										<ListGroup.Item className='card-list-text'>
 											city: {travelDay.city}
 										</ListGroup.Item>
 										<ListGroup.Item className='card-list-number'>
-											temp: {travelDay.temp}
+											temp: {travelDay.temp}{travelDay.tempUnit}
 										</ListGroup.Item>
 										<ListGroup.Item className='card-list-text'>
 											wind speed {travelDay.windSpeed}
@@ -64,7 +64,7 @@ function TravelCards(props) {
 										</ListGroup.Item>
 										<ListGroup.Item className='card-list-text'>
 											precipitation:{' '}
-											{travelDay.probabilityOfPrecipitation.value}
+											{travelDay.probabilityOfPrecipitation.value}%
 										</ListGroup.Item>
 										<ListGroup.Item className='card-list-text'>
 											detailed forecast: {travelDay.detailedForecast}
