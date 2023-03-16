@@ -5,9 +5,12 @@
 }
 .weatherCards {
     display: flex;
+    box-shadow: rgba(0, 0, 0, 0.855) 5px 5px 13px 5px;
     flex-direction: row;
-    border: red solid 3px;
-    overflow-y: scroll;   
     overflow-x: scroll;
     padding: 20px;
+    background-color: rgba(131, 123, 123, 0.489);
+    border-radius: 10px;
+    gap: 30px;
+    margin-bottom: 20px;
 }
