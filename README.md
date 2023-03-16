@@ -36,3 +36,17 @@
 ![Wire Framework](img/project3_wireframe3.png)
 ![Wire Framework](img/project3_wireframe2.png)
 ![Wire Framework](img/project3_wireframe1.png)
+
+### Notes fgor latter
+
+- this app is a trip planer that allows the user to save the wether for the days they will be in a location. as of now it is pulling from a 3rd part api for the wether info in the area as well as pulling from an additional 3rd party api for translating the city name in to latitude and longitude cordanance. the user can see the forecast for the week and select wether cards to add the the trip box as well as add and change plans and delete cards as needed. we would like to add      if we had more time. in the future we would like to add       to the website 
+
+### stretch goal user storyies
+
+- 
+
+- 
+
+- 
+
+- 
