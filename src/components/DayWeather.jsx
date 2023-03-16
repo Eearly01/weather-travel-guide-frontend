@@ -10,6 +10,7 @@ function DayWeather(props) {
 
 		const newCard = {
 			number: props.day.number,
+			dayName: props.day.name,
 			city: props.city.municipality,
 			temp: props.day.temperature,
 			tempUnit: props.day.temperatureUnit,
@@ -19,30 +20,33 @@ function DayWeather(props) {
 			detailedForecast: props.day.detailedForecast,
 		};
 
-		const existingCardIndex = props.cards.findIndex(
-			(card) => card.number === newCard.number
-		);
-		if (existingCardIndex !== -1) {
-			// Delete the existing card with the same number
-			const updatedCards = [...props.cards];
-			updatedCards.splice(existingCardIndex, 1);
-			props.setCards(updatedCards);
-		}
+		axios
+			.get('https://weather-travel-guide-backend.onrender.com/days')
+			.then((res) => {
+				const existingCardIndex = res.data.findIndex(
+					(card) => card.number === newCard.number
+				);
+				if (existingCardIndex !== -1) {
+					// Delete the existing card with the same number
+					const deleteUrl =
+						'https://weather-travel-guide-backend.onrender.com/days/' + res.data[existingCardIndex]._id;
+					axios
+						.delete(deleteUrl)
+						.then(() => {
+							setUpdated(!updated);
+						})
+						.catch((err) => console.log(err));
+				}
+			})
+			.catch((err) => console.log(err));
 
-		// Find the index where the new card should be inserted based on its number
-		let insertIndex = 0;
-		while (
-			insertIndex < props.cards.length &&
-			props.cards[insertIndex].number < newCard.number
-		) {
-			insertIndex++;
-		}
-
-		// Insert the new card at the appropriate index
-		const updatedCards = [...props.cards];
-		updatedCards.splice(insertIndex, 0, newCard);
-		props.setCards(updatedCards);
-		setUpdated(!updated);
+		// Insert the new card
+		axios
+			.post('https://weather-travel-guide-backend.onrender.com/days', newCard)
+			.then(() => {
+				setUpdated(!updated);
+			})
+			.catch((err) => console.log(err));
 	};
 
 	useEffect(() => {
