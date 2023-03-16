@@ -10,8 +10,10 @@ function DayWeather(props) {
 		axios
 			.post('https://weather-travel-guide-backend.onrender.com/days', {
 				number: props.day.number,
+				dayName: props.day.name,
 				city: props.city.municipality,
 				temp: props.day.temperature,
+				tempUnit: props.day.temperatureUnit,
 				windSpeed: props.day.windSpeed,
 				windDirection: props.day.windDirection,
 				probabilityOfPrecipitation: props.day.probabilityOfPrecipitation.value,
@@ -29,9 +31,9 @@ function DayWeather(props) {
 
 	return (
 		<>
-			<Card border='Primary' style={{ width: '18rem' }}>
+			<Card border='Primary' style={{ width: '18rem' } } className='day-card'>
 				<Card.Body>
-					<Card.Title>{props.city.municipality}</Card.Title>
+					<Card.Title className='day-title'>{props.city.municipality}</Card.Title>
 					<Card.Subtitle className='mb-2 text-muted'>
 						{props.day.name}
 					</Card.Subtitle>
