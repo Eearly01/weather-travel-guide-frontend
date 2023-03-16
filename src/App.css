@@ -5,6 +5,5 @@
 }
 .weatherCards {
     border: red solid 3px;
-    overflow-y: scroll;
-    
+    overflow-y: scroll;   
 }
