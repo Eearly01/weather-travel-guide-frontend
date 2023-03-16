@@ -48,7 +48,7 @@ function TravelCards(props) {
 
 	return (
 		<div className='weatherCards'>
-			<Row xs={2} md={3}>
+			
 				{props.travelDays.map((travelDay, i) => {
 					return (
 						<Col key={i}>
@@ -108,7 +108,7 @@ function TravelCards(props) {
 						</Col>
 					);
 				})}
-			</Row>
+			
 		</div>
 	);
 }
