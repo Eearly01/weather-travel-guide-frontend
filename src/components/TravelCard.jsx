@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import {
 	Card,
@@ -10,21 +10,22 @@ import {
 } from 'react-bootstrap';
 import axios from 'axios';
 
+const PORT = process.env.REACT_APP_PORT;
+
 function TravelCards(props) {
-	const [updated, setUpdated] = useState(false);
 
 	// handel for delete button
 	const handleDelete = (travelData) => {
 		axios
 			.delete(
-				`https://weather-travel-guide-backend.onrender.com/days/${travelData}`
+				`${PORT}/days/${travelData}`
 			)
 			.then(() => {
 				axios
-					.get('https://weather-travel-guide-backend.onrender.com/days')
+					.get(`${PORT}/days`)
 					.then((response) => {
 						props.setTravelDays(response.data);
-						setUpdated(!updated);
+						props.setUpdated(!props.updated);
 					});
 			});
 	};
@@ -32,18 +33,14 @@ function TravelCards(props) {
 	const handleSubmit = (e, id) => {
 		e.preventDefault();
 		axios
-			.put(`https://weather-travel-guide-backend.onrender.com/days/${id}`, {
+			.put(`${PORT}/days/${id}`, {
 				planner: e.target.description.value,
 			})
 			.then((res) => {
-				setUpdated(!updated);
+				props.setUpdated(!props.updated);
 			})
 			.catch((err) => console.log(err));
 	};
-
-	useEffect(() => {
-		props.callApi();
-	}, [updated]);
 
 	return (
 		<div className='weatherCards'>
