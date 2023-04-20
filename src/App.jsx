@@ -15,11 +15,12 @@ function App() {
 	const [updated, setUpdated] = useState(false);
 	const [city, setCity] = useState({});
 	const [travelDays, setTravelDays] = useState([]);
-
+	const PORT = process.env.REACT_APP_PORT;
 	const callApi = () => {
 		axios
-			.get('https://weather-travel-guide-backend.onrender.com/days')
+			.get(`${PORT}/days`)
 			.then((res) => {
+				console.log('once');
 				setTravelDays(res.data);
 			});
 	};
@@ -36,7 +37,9 @@ function App() {
 	const formSubmit = (e) => {
 		e.preventDefault();
 		getCoord(e.target.city.value, e.target.state.value);
+		
 		setUpdated(!updated);
+		
 	};
 
 	const getCoord = (city, state) => {
@@ -54,7 +57,7 @@ function App() {
 	};
 
 	useEffect(() => {
-		getWeather();
+		callApi()
 	}, [updated]);
 
 	return (
@@ -62,7 +65,8 @@ function App() {
 			<TravelCard 
 			travelDays = {travelDays}
 			setTravelDays = {setTravelDays}
-			callApi = {callApi}
+			updated = {updated}
+			setUpdated = {setUpdated}
 			/>
 			<h1>Weather Travel Guide</h1>
 			<form onSubmit={formSubmit}>
@@ -75,14 +79,15 @@ function App() {
 					? weatherDays.map((day, i) => {
 							if (i % 2 === 0) {
 								return (
-									<Row key = {i}>
+									<Row key={i}>
 										<Col sm={6} md={4}>
 											<DayWeather
 												day={day}
 												city={city}
 												travelDays={travelDays}
 												setTravelDays={setTravelDays}
-												callApi={callApi}
+												updated={updated}
+												setUpdated={setUpdated}
 											/>
 										</Col>
 										{weatherDays[i + 1] && (
@@ -92,7 +97,8 @@ function App() {
 													city={city}
 													travelDays={travelDays}
 													setTravelDays={setTravelDays}
-													callApi={callApi}
+													updated={updated}
+													setUpdated={setUpdated}
 												/>
 											</Col>
 										)}

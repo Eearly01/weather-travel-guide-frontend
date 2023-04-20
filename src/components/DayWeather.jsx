@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Card, ListGroup, Button } from 'react-bootstrap';
 import axios from 'axios';
+const PORT = process.env.REACT_APP_PORT;
 
 function DayWeather(props) {
-	const [updated, setUpdated] = useState(false);
 
 	const addToWeatherCards = (e) => {
 		e.preventDefault();
@@ -21,7 +21,7 @@ function DayWeather(props) {
 		};
 
 		axios
-			.get('https://weather-travel-guide-backend.onrender.com/days')
+			.get(`${PORT}/days`)
 			.then((res) => {
 				const existingCardIndex = res.data.findIndex(
 					(card) => card.number === newCard.number
@@ -29,12 +29,12 @@ function DayWeather(props) {
 				if (existingCardIndex !== -1) {
 					// Delete the existing card with the same number
 					const deleteUrl =
-						'https://weather-travel-guide-backend.onrender.com/days/' +
+						`${PORT}/days/` +
 						res.data[existingCardIndex]._id;
 					axios
 						.delete(deleteUrl)
 						.then(() => {
-							setUpdated(!updated);
+							props.setUpdated(!props.updated);
 						})
 						.catch((err) => console.log(err));
 				}
@@ -43,16 +43,12 @@ function DayWeather(props) {
 
 		// Insert the new card
 		axios
-			.post('https://weather-travel-guide-backend.onrender.com/days', newCard)
+			.post(`${PORT}/days`, newCard)
 			.then(() => {
-				setUpdated(!updated);
+				props.setUpdated(!props.updated);
 			})
 			.catch((err) => console.log(err));
 	};
-
-	useEffect(() => {
-		props.callApi();
-	}, [updated]);
 
 	return (
 		<>
